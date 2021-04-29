@@ -1,4 +1,5 @@
 const Web3 = require('web3')
+const Web3EthAbi = require('web3-eth-abi')
 const ProviderEngine = require('web3-provider-engine')
 const HookedWalletSubprovider = require('web3-provider-engine/subproviders/hooked-wallet.js')
 const FilterSubprovider = require('web3-provider-engine/subproviders/filters.js')
@@ -20,6 +21,7 @@ const AlphaWallet = {
     const engine = new ProviderEngine()
     const web3 = new Web3(engine)
     context.web3 = web3
+    context.web3.eth.abi = Web3EthAbi
     globalSyncOptions = syncOptions
 
     engine.addProvider(new CacheSubprovider())
